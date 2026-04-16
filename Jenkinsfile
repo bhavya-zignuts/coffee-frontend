@@ -32,7 +32,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir('coffee-ui') {
-                    sh 'docker build -t $IMAGE_NAME .'
+                    sh '/usr/local/bin/docker build -t $IMAGE_NAME .'
                 }
             }
         }

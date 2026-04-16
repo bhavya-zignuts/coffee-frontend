@@ -99,7 +99,7 @@ pipeline {
         stage('Trivy FS Scan') {
             steps {
                 dir('coffee-ui') {
-                    sh 'trivy fs .'
+                    sh '/opt/homebrew/bin/trivy fs .'
                 }
             }
         }
@@ -115,7 +115,7 @@ pipeline {
         // ---------------- TRIVY IMAGE SCAN ----------------
         stage('Trivy Image Scan') {
             steps {
-                sh 'trivy image $IMAGE_NAME'
+                sh '/opt/homebrew/bin/trivy image $IMAGE_NAME'
             }
         }
 

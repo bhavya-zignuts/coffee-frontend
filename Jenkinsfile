@@ -17,19 +17,25 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                dir('coffee-ui') {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Build App') {
             steps {
-                sh 'npm run build'
+                dir('coffee-ui') {
+                    sh 'npm run build'
+                }
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
+                dir('coffee-ui') {
+                    sh 'docker build -t $IMAGE_NAME .'
+                }
             }
         }
 

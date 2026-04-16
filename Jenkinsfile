@@ -81,21 +81,19 @@ pipeline {
         }
 
         // ---------------- SONARQUBE ----------------
-        stage('SonarQube Analysis') {
-            steps {
-                dir('coffee-ui') {
-                    withSonarQubeEnv('sonar') {
-                        sh '''
-                        sonar-scanner \
-                        -Dsonar.projectKey=coffee-ui \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=$SONAR_AUTH_TOKEN
-                        '''
-                    }
-                }
+      stage('SonarQube Analysis') {
+    steps {
+        dir('coffee-ui') {
+            withSonarQubeEnv('sonar') {
+                sh '''
+                /opt/homebrew/bin/sonar-scanner \
+                -Dsonar.projectKey=coffee-ui \
+                -Dsonar.sources=.
+                '''
             }
         }
+    }
+}
 
         // ---------------- TRIVY FS SCAN ----------------
         stage('Trivy FS Scan') {

@@ -9,12 +9,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/bhavya-zignuts/coffee-frontend.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 dir('coffee-ui') {

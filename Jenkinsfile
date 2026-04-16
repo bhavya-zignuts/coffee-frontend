@@ -40,9 +40,9 @@ pipeline {
         stage('Run Container') {
             steps {
                 sh '''
-                docker stop $CONTAINER_NAME || true
-                docker rm $CONTAINER_NAME || true
-                docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME
+                    /usr/local/bin/docker stop $CONTAINER_NAME || true
+                    /usr/local/bin/docker rm $CONTAINER_NAME || true
+                    /usr/local/bin/docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME
                 '''
             }
         }

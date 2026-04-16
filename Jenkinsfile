@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node-20'
+    }
+
     environment {
         IMAGE_NAME = "coffee_frontend"
         CONTAINER_NAME = "coffee-container"
@@ -8,12 +12,6 @@ pipeline {
     }
 
     stages {
-
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/bhavya-zignuts/coffee-frontend.git'
-            }
-        }
 
         stage('Install Dependencies') {
             steps {
